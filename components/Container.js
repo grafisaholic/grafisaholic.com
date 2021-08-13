@@ -61,12 +61,12 @@ const Container = ({ children }) => {
                             src={"https://avatars2.githubusercontent.com/u/37842853?v=4"}
                         />
                     </NextLink>
-                    <NextLink href="/" passHref>	
+                    <NextLink href="/blogs" passHref>	
                         <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
                             Blogs
                         </Button>	
                     </NextLink>	
-                    <NextLink href="/blog" passHref>	
+                    <NextLink href="/projects" passHref>	
                         <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
                             Projects	
                         </Button>	
