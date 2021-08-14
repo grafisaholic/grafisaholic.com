@@ -10,7 +10,7 @@ import {
 import Container from '../components/Container';
 import FeaturedProjectItem from '../components/projects/FeaturesProjects';
 
-export default function projects() {
+export default function Projects() {
   const {colorMode} = useColorMode();
   const colorSecondary = {
     light: 'gray:700',

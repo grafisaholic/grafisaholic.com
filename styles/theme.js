@@ -32,7 +32,7 @@ const overrides = {
         xl: "20px",
         "2xl": "24px",
         "3xl": "28px",
-        "4xl": "36px",
+        "4xl": "35px",
         "5xl": "48px",
         "6xl": "64px",
     },

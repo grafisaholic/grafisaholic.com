@@ -10,7 +10,7 @@ import {
 import Container from '../components/Container';
 import PostListItem from '../components/blogs/PostListItems';
 
-export default function blogs() {
+export default function Blogs() {
   const {colorMode} = useColorMode();
   const colorSecondary = {
     light: 'gray:700',

@@ -1,16 +1,13 @@
 import React from 'react';
 import {
     useColorMode,
-    Button,
-    Avatar,
-    Link,
     Flex,
     Box
 } from '@chakra-ui/react';
-import NextLink from 'next/link';
-import styled from '@emotion/styled';
 
-import DarkModeSwitch from './DarkModeSwitch';
+// component
+import Header from './_partials/Header';
+import Footer from './_partials/Footer';
 
 const Container = ({ children }) => {	
     const { colorMode } = useColorMode()	
@@ -22,84 +19,36 @@ const Container = ({ children }) => {
         light: 'black',	
         dark: 'white'	
     }	
-    const navHoverBg = {	
-        light: 'teal.50',	
-        dark: 'gray.300',	
-    }	
-    const StickyNav = styled(Flex)`	
-        position: sticky;	
-        z-index: 10;	
-        top: 0;	
-        backdrop-filter: saturate(180%) blur(20px);	
-        transition: height .5s, line-height .5s;	
-        `	
+    
     return (	
         <>	
-            <StickyNav	
-                flexDirection="row"	
-                justifyContent="space-between"	
-                alignItems="center"	
-                maxWidth="800px"	
-                minWidth="356px"	
-                width="100%"	
-                bg={bgColor[colorMode]}	
-                as="nav"	
-                px={[2, 6, 6]}	
-                py={2}	
-                mt={8}	
-                mb={[0, 0, 8]}	
-                mx="auto"	
-            >	
-                <Box>	
-                    <NextLink href={"/"} passHref>
-                        <Avatar
-                            as={Link}
-                            size={"sm"}
-                            mt={1}
-                            mr={3}	
-                            // src={UserIcon}
-                            src={"https://avatars2.githubusercontent.com/u/37842853?v=4"}
-                        />
-                    </NextLink>
-                    <NextLink href="/blogs" passHref>	
-                        <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
-                            Blogs
-                        </Button>	
-                    </NextLink>	
-                    <NextLink href="/projects" passHref>	
-                        <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
-                            Projects	
-                        </Button>	
-                    </NextLink>	
-                    <NextLink href="/blog" passHref>	
-                        <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
-                            About	
-                        </Button>	
-                    </NextLink>	
-                    <NextLink href="/blog" passHref>	
-                        <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
-                            Tech Stack	
-                        </Button>	
-                    </NextLink>	
-                    <NextLink href="/blog" passHref>	
-                        <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
-                            Achivements	
-                        </Button>	
-                    </NextLink>	
-                </Box>	
-                <DarkModeSwitch />	
-            </StickyNav >	
-            <Flex	
-                as="main"	
-                justifyContent="center"	
-                flexDirection="column"	
-                bg={bgColor[colorMode]}	
-                color={color[colorMode]}	
-                px={[0, 4, 4]}	
-                mt={[4, 8, 8]}	
-            >	
-                {children}	
-            </Flex>	
+          <Header />
+          {/* <Flex	
+              as="main"	
+              justifyContent="center"	
+              flexDirection="column"	
+              bg={bgColor[colorMode]}	
+              color={color[colorMode]}	
+              px={[0, 4, 4]}	
+              mt={[4, 8, 8]}	
+          >	
+              {children}	
+          </Flex>	 */}
+          <Box
+            fontSize="xl"
+            w={["90%", "85%", "80%"]}
+            flexDirection="column"	
+            bg={bgColor[colorMode]}	
+            color={color[colorMode]}	
+            as="main"
+            maxW={800}
+            mx="auto"
+          >
+            <Box pb={10}>
+              {children}
+            </Box>
+          </Box>
+          <Footer />
         </>	
     )	
 }	
