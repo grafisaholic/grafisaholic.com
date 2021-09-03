@@ -3,8 +3,8 @@ import {
   useColorMode,
   Heading,
   Text,
-  Flex,
-  Stack
+  Center,
+  VStack
 } from '@chakra-ui/react';
 
 import Container from '../components/Container';
@@ -20,43 +20,30 @@ export default function Blogs() {
   return (
     <Container>
       <Head>Blogs - Grafisaholic.com</Head>
-      <Stack
+      <VStack
         as="main"
-        spacing={8}
         justifyContent="center"
         alignItems="flex-start"
-        m="0 auto 0 auto"
-        maxWidth="700px"
       >
-        <Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          maxWidth="700px"
-          px={4}
-          minH="100vh"
-        >
-          <Heading letterSpacing="tight" as="h1" size="xl" mb={2}>
-            Blogs
-          </Heading>
+        <Center as="section" w="100%" mb={5}>
+          <VStack>
+            <Heading letterSpacing="tight" as="h1" size="xl">
+              Blogs
+            </Heading>
 
-          <Text mb={5} color={colorSecondary[colorMode]}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard's dummy text ever since the 1500s.</Text>
-        
-          <Heading letterSpacing="tight" as="h2" size="lg" mb={4}>
-            Featured Post
-          </Heading>
-          <PostListItem/>
-          <PostListItem/>
-          <PostListItem/>
-          <PostListItem/>
+            <Text mb={5} color={colorSecondary[colorMode]}>Some interesting things that hopefully can make you feel at home here.</Text>
+          </VStack>
+        </Center>
 
-          <Heading letterSpacing="tight" as="h2" size="lg" mb={4}>
-            All Post
-          </Heading>
-          <PostListItem/>
-          <PostListItem/>
-        </Flex>
-      </Stack>
+        <PostListItem/>
+        <PostListItem/>
+        <PostListItem/>
+        <PostListItem/>
+        <PostListItem/>
+        <PostListItem/>
+        <PostListItem/>
+        <PostListItem/>
+      </VStack>
     </Container>
   )
 }

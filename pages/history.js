@@ -13,6 +13,9 @@ import Container from '../components/Container';
 import PageTitle from '../components/_partials/pageTitle';
 import CareerCard from '../components/history/Career';
 
+// 
+import {careerHistory, educationHistory} from '../data/data'; 
+
 export default function History() {
 
   return (
@@ -28,7 +31,7 @@ export default function History() {
           <Heading>
             <Flex align="center">
               <Box as={BsBriefcaseFill} fontSize="27px" mr={3} />
-              <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="4xl">
+              <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="3xl">
                 Career
               </PageTitle>
             </Flex>
@@ -42,16 +45,23 @@ export default function History() {
           mx={[0, 0, 6]}
           mt={12}
         >
-          <CareerCard />
-          <CareerCard />
-          <CareerCard />
+          {
+            careerHistory.map((c, index) => (
+              <CareerCard 
+                title={c.company}
+                desc={c.position}
+                key={index}
+                {...c}
+              />
+            ))
+          }
         </VStack>
 
         <Box>
           <Heading>
             <Flex align="center">
               <Box as={FaGraduationCap} fontSize="30px" mr={3} />
-              <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="2xl">
+              <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="3xl">
                 Education
               </PageTitle>
             </Flex>
@@ -65,9 +75,16 @@ export default function History() {
           mx={[0, 0, 6]}
           mt={12}
         >
-          <CareerCard />
-          <CareerCard />
-          <CareerCard />
+          {
+            educationHistory.map((c, index) => (
+              <CareerCard 
+                title={c.university}
+                desc={c.studyProgram}
+                key={index}
+                {...c}
+              />
+            ))
+          }
         </VStack>
       </Stack>
     </Container>

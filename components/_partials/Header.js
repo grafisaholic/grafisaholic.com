@@ -82,7 +82,7 @@ const Header = () => {
             </NextLink>	
             <NextLink href="/history" passHref>	
                 <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>	
-                    Historys	
+                    Historys
                 </Button>	
             </NextLink>	
         </Box>	

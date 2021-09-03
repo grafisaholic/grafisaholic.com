@@ -10,7 +10,7 @@ import {
   useColorMode,
   Heading
 } from '@chakra-ui/react';
-const CareerCard = () => {
+const CareerCard = ({title, desc, ...props}) => {
   const {colorMode} = useColorMode();
   const colorSecondary = {
     light: 'gray:700',
@@ -35,15 +35,15 @@ const CareerCard = () => {
             h={16}
             objectFit="cover"
             fallbackSrc=''
-            src=''
-            alt=''
+            src={props.icon}
+            alt={title}
           />
           <Stack spacing={2} pl={3} align="left">
             <Heading align="left" fontSize="xl" color={colorSecondary[colorMode]}>
-              Career 1
+              {title}
             </Heading>
             <Heading align="left" fontSize="sm" color={colorSecondary[colorMode]}>
-              Senior Software Engineer
+              {desc}
             </Heading>
 
             <Stack
@@ -53,27 +53,25 @@ const CareerCard = () => {
               alignItems="center"
               display={["none", "none", "flex", "flex"]}
             >
-              <Tag
-                size="sm"
-                borderRadius="full"
-                variant="outline"
-                colorScheme="cyan"
-              >
-                <TagLabel>Javascript</TagLabel>
-              </Tag>
-              <Tag
-                size="sm"
-                borderRadius="full"
-                variant="outline"
-                colorScheme="cyan"
-              >
-                <TagLabel>Node Js</TagLabel>
-              </Tag>
+              {
+                props.technology ? (
+                  props.technology.map((tech, index) => (
+                    <Tag
+                      size="sm"
+                      borderRadius="10"
+                      variant="outline"
+                      key={index}
+                    >
+                      <TagLabel>{tech}</TagLabel>
+                    </Tag>
+                  ))
+                ) : ''
+              }
             </Stack>
           </Stack>
         </Flex>
         <Stack display={["none", "none", "flex", "flex"]}>
-          <Text fontSize={14} color={colorSecondary[colorMode]} align="right">2018 - 2019</Text>
+          <Text fontSize={14} color={colorSecondary[colorMode]} align="right">{props.startDate} - {props.endDate}</Text>
         </Stack>
       </Flex>
 

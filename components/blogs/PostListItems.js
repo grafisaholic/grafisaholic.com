@@ -1,50 +1,58 @@
 import NextLink from 'next/link';
 import {
-    useColorMode,
-    Heading,
-    Text,
-    Flex,
-    Box,
-    Link
+  Heading,
+  useColorMode,
+  VStack,
+  HStack,
+  Link,
+  Text,
+  Tooltip
 } from '@chakra-ui/react';
 
 const PostListItem = () => {
   const {colorMode} = useColorMode();
-  const secondaryTextColor = {
-    light: 'gray.700',
+  const descColor = {
+    light: 'gray.600',
     dark: 'gray.400'
   }
 
+  const bgColor = {
+    light: "white",
+    dark: "gray.800"
+  }
+
   return (
-    <NextLink href="/blogs" passHref>
-      <Link w="100%" >
-        <Box mb={7} display="block" width="100%">
-          <Flex
-            width="100%"
-            align="flex-start"
-            justifyContent="space-between"
-            flexDirection={['column', 'row']}
-          >
-            <Flex flexDirection="column" align="flex-start" justifyContent="start" width="100%">
-              <Heading size="sm" as="h3" mb={1} fontWeight="medium">
-                Example title blog
-              </Heading>
-            </Flex>
+    <VStack
+      spacing={1}
+      p={4}
+      _hover={{ shadow: "md", textDecoration: "none" }}
+      borderWidth="1px"
+      position="relative"
+      rounded="md"
+      mt={3}
+      bg={bgColor[colorMode]}
+      align="left"
+    >
+      <HStack spacing={2} isInline>
+        <Tooltip hasArrow label="Published" placement="top">
+          <Text fontSize="xs" fontWeight="500" color={descColor[colorMode]}>
+            3 April 2021 / ARTICLE
+          </Text>
+        </Tooltip>
+      </HStack>
 
-            <Text
-              color="gray.500"
-              minWidth="105px"
-              textAlign={['left', 'right']}
-              mb={[4, 0]}
-            >
-              122 Views
-            </Text>
-          </Flex>
+      <HStack spacing={1} alignItems="center" d={["none", "none", "flex"]}>
+        <Heading fontSize="1xl" align="left" mt={0}>
+          <NextLink href={`/blog`} passHref>
+            <Text as={Link}>Hello World</Text>
+          </NextLink>
+        </Heading>
+      </HStack>
 
-          <Text color={secondaryTextColor[colorMode]}>Learn what useEffect is learn how to use useEffect in Next.JS.</Text>
-        </Box>
-      </Link>
-    </NextLink>
+      <Text align="left" fontSize="sm" color={descColor[colorMode]}>
+        Payuni software is a cloud-based PPOB credit and payment server application to make it easier for merchants to monitor transactions, deposits, made using microservices infrastructure.
+      </Text>
+    </VStack>
   )
 }
 

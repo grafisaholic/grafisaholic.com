@@ -2,23 +2,23 @@ import { useState } from 'react';
 import {
   Flex,
   Link,
-  Heading,
   Text,
   Stack,
+  Tag,
+  HStack,
   useColorMode,
   Image
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
-const FeaturedProjectItem = ({title, children}) => {
+const FeaturedProjectItem = ({title, children, ...props}) => {
   const {colorMode} = useColorMode();
   const borderColor = {
     light: 'gray.200',
     dark: 'gray.600'
   }
-
-  const colorSecondary = {
-    light: 'gray.700',
+  const descColor = {
+    light: 'gray.600',
     dark: 'gray.400'
   }
   
@@ -30,14 +30,14 @@ const FeaturedProjectItem = ({title, children}) => {
   const [opacity, setOpacity] = useState(0)
 
   return (
-    <Link
-      href='/projects'
+    <HStack
       title={title}
-      isExternal
       _hover={{
           boxShadow: boxShadowColor[colorMode],
           textDecoration: 'none'
       }}
+      spacing={4}
+      w="100%"
       mt={4}
       onMouseOver={() => setOpacity(1)}
       onMouseLeave={() => setOpacity(0)}
@@ -59,21 +59,31 @@ const FeaturedProjectItem = ({title, children}) => {
 
         <Stack>
           <Flex justify="space-between">
-            <Heading 
+            <Link
+              href="/projects" 
               as="h4"
               fontSize="md"
               fontWeight="bold"
               mb={2}
             >
               {title}
-            </Heading>
+            </Link>
             <ExternalLinkIcon opacity={opacity} fontSize="2xl" />
           </Flex>
 
-          <Text color={colorSecondary[colorMode]}>{children}</Text>
+          <Text color={descColor[colorMode]} fontSize="sm" >{children}</Text>
+          <HStack spacing="1">
+            {
+              props.technologies.map((tech, index) => (
+                <Tag size="sm" key={index}>
+                  {tech}
+                </Tag>
+              ))
+            }
+          </HStack>
         </Stack>
       </Flex>
-    </Link>
+    </HStack>
   )
 }
 

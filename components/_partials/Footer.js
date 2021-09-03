@@ -14,8 +14,8 @@ import siteConfig from '../../data/site-config';
 const Footer = () => {
   const {colorMode} = useColorMode();
   const colorSecondary = {
-    light: 'gray:700',
-    dark: 'gray:400'
+    light: 'gray.500',
+    dark: 'gray.400'
   }
   return (
     <Stack
@@ -39,7 +39,7 @@ const Footer = () => {
         <Text
           textAlign="center"
           fontSize="sm"
-          color={useColorModeValue("gray.500", "gray.200")}
+          color={colorSecondary[colorMode]}
         >
           © {new Date().getFullYear()} Khabibur Rokhman{" "}
         </Text>
