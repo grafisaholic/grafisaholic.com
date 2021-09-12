@@ -1,8 +1,8 @@
 ---
 published_at: "2021-08-24"
 category: "article"
-title: "Simple Hello Word Markdown."
-featured: true
+title: "Hello Word"
+featured: false
 desc: "This is first post blogs hello world with markdown post"
 ---
 

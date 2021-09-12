@@ -23,8 +23,9 @@ export default function About() {
     <Container>
       <Stack
         as="main"
-        justifyContent="center"
+        spacing={8}
         alignItems="flex-start"
+        m="0 auto 0 auto"
         maxWidth="700px"
       >
         <Flex
@@ -78,14 +79,14 @@ export default function About() {
           <Text mb={3} fontSize="md" color={colorSecondary[colorMode]}>
             Outside of my job as an employee, sometimes I often do street photography, write blogs, read novels, and badminton.
           </Text>
+        <Divider orientation="horizontal" mb={4} />
         </Flex>
-        <Divider orientation="horizontal" />
       </Stack>
       <Stack
         as="main"
-        justifyContent="center"
         mt={4}
         alignItems="flex-start"
+        m="0 auto 0 auto"
         maxWidth="700px"
       >
         <Flex

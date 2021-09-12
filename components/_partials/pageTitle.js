@@ -5,7 +5,6 @@ import {
 export default function PageTitle({children, underlineColor, ...props}) {
   return (
     <Box
-      as="h1"
       mt={10}
       mb={6}
       lineHeight="shorter" 

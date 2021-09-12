@@ -36,7 +36,7 @@ const SkillsCard = ({title, description, link, image}) => {
         }
       }}
     >
-      <Box whileHover={{ y: -5}}>
+      <Box>
         <NextLink href={link} passHref>
           <Link isExternal>
             <HStack
@@ -74,6 +74,7 @@ const SkillsCard = ({title, description, link, image}) => {
                   width={26}
                   layout="fixed"
                   rounded="md"
+                  alt={title}
                 />
               </Box>
               <VStack

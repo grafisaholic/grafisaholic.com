@@ -59,16 +59,20 @@ const FeaturedProjectItem = ({title, children, ...props}) => {
 
         <Stack>
           <Flex justify="space-between">
-            <Link
-              href="/projects" 
+            <Text
               as="h4"
               fontSize="md"
               fontWeight="bold"
               mb={2}
             >
               {title}
+            </Text>
+            <Link
+              isExternal
+              href={props.link}
+            >
+              <ExternalLinkIcon opacity={opacity} fontSize="2xl" />
             </Link>
-            <ExternalLinkIcon opacity={opacity} fontSize="2xl" />
           </Flex>
 
           <Text color={descColor[colorMode]} fontSize="sm" >{children}</Text>

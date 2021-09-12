@@ -9,7 +9,10 @@ import {
   Tooltip
 } from '@chakra-ui/react';
 
-const PostListItem = () => {
+const PostListItem = ({ post }) => {
+  const { title, desc, published_at, slug, category } = post;
+
+  
   const {colorMode} = useColorMode();
   const descColor = {
     light: 'gray.600',
@@ -32,25 +35,26 @@ const PostListItem = () => {
       mt={3}
       bg={bgColor[colorMode]}
       align="left"
+      width="700px"
     >
       <HStack spacing={2} isInline>
         <Tooltip hasArrow label="Published" placement="top">
           <Text fontSize="xs" fontWeight="500" color={descColor[colorMode]}>
-            3 April 2021 / ARTICLE
+            {published_at} / {category.toUpperCase()}
           </Text>
         </Tooltip>
       </HStack>
 
       <HStack spacing={1} alignItems="center" d={["none", "none", "flex"]}>
         <Heading fontSize="1xl" align="left" mt={0}>
-          <NextLink href={`/blog`} passHref>
-            <Text as={Link}>Hello World</Text>
+          <NextLink href={`/blogs/${slug}`} passHref>
+            <Text as={Link}>{title}</Text>
           </NextLink>
         </Heading>
       </HStack>
 
-      <Text align="left" fontSize="sm" color={descColor[colorMode]}>
-        Payuni software is a cloud-based PPOB credit and payment server application to make it easier for merchants to monitor transactions, deposits, made using microservices infrastructure.
+      <Text align="left" fontSize="xs" color={descColor[colorMode]}>
+        {desc}
       </Text>
     </VStack>
   )

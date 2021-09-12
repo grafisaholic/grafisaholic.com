@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 
-const ProjectItem = () => {
+const ProjectItem = ({ title, desc, link, dependencies}) => {
   return (
     <Box
       w={'100%'}
@@ -24,23 +24,24 @@ const ProjectItem = () => {
         fontSize={'2xl'}
         mb={2}
       >
-        Kawal COVID-19
+       {title}
       </Heading>
 
       <Text fontSize="sm" color={'gray.500'}>
-      Payuni software is a cloud-based PPOB credit and payment server application to make it easier for merchants to monitor transactions, deposits, made using microservices infrastructure.
+        {desc}
       </Text>
 
-      <Box pt={0} px="lg" pb="lg" mt={2}>
-        <NextLink href="/" passHref>
-          <Text 
-            fontSize="md" 
-            as={Link} 
-            fontWeight={600}
-            color="blue.500"
-          >
-            Go to project &rarr;
-          </Text>
+      <Box pt={0} px="lg" pb="lg" mt={3}>
+        <NextLink href={`${link}`} passHref>
+          <Link isExternal>
+            <Text 
+              fontSize="md" 
+              fontWeight={600}
+              color="blue.500"
+            >
+              Go to project &rarr;
+            </Text>
+          </Link>
         </NextLink>
       </Box>
     </Box>

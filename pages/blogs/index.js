@@ -7,10 +7,20 @@ import {
   VStack
 } from '@chakra-ui/react';
 
-import Container from '../components/Container';
-import PostListItem from '../components/blogs/PostListItems';
+import Container from '../../components/Container';
+import PostListItem from '../../components/blogs/PostListItems';
 
-export default function Blogs() {
+import { getAllPosts } from '../../lib/post'
+
+export async function getStaticProps() {
+  const allPosts = getAllPosts();
+
+  return {
+    props: { allPosts }
+  }
+}
+
+export default function Blogs({ allPosts }) {
   const {colorMode} = useColorMode();
   const colorSecondary = {
     light: 'gray:700',
@@ -22,8 +32,9 @@ export default function Blogs() {
       <Head>Blogs - Grafisaholic.com</Head>
       <VStack
         as="main"
-        justifyContent="center"
         alignItems="flex-start"
+        m="0 auto 0 auto"
+        maxWidth="700px"
       >
         <Center as="section" w="100%" mb={5}>
           <VStack>
@@ -35,14 +46,12 @@ export default function Blogs() {
           </VStack>
         </Center>
 
-        <PostListItem/>
-        <PostListItem/>
-        <PostListItem/>
-        <PostListItem/>
-        <PostListItem/>
-        <PostListItem/>
-        <PostListItem/>
-        <PostListItem/>
+        {
+          allPosts.map((post, index) => (
+            <PostListItem key={index} post={post} />
+          ))
+        }
+
       </VStack>
     </Container>
   )

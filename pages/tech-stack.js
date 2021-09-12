@@ -68,7 +68,7 @@ export default function TechStack() {
             <Text mb={5} color={colorSecondary[colorMode]}>A list of my favorite tools and technologies that I use on work.</Text>
           </VStack>
         </Center>
-        <Center as="section" as="section">
+        <Center as="section">
           <Tabs variant="soft-rounded" colorScheme="green" align="center">
             <TabList display="flex" flexWrap="wrap">
               <Tab

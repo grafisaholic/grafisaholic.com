@@ -16,9 +16,16 @@ import FeaturedProjectCard from '../components/projects/FeaturesProjects';
 import PostListItem from '../components/blogs/PostListItems';
 
 import { FeaturedProjects } from '../data/projects';
-import FeaturedProjectItem from '../components/projects/FeaturesProjects';
+import { getFeaturedPost } from '../lib/post'
 
-export default function Index() {
+export async function getStaticProps() {
+  const featuredPost = getFeaturedPost(3)
+  return {
+    props: { featuredPost }
+  }
+}
+
+export default function Index({ featuredPost }) {
   const {colorMode} = useColorMode()
   const colorSecondary = {
     light: 'gray.600',
@@ -65,7 +72,7 @@ export default function Index() {
               <Avatar
                 size={"2xl"}
                 // src={UserIcon}
-                src={"https://gitlab.com/uploads/-/system/user/avatar/3770900/avatar.png"}
+                src={"/assets/avatar.png"}
               />
             </Box>
             <Flex
@@ -99,52 +106,54 @@ export default function Index() {
         </Flex> 
 
 
-      </Stack>
-      {/* FEATURED POST */}
-      <Flex mt={4} w="100%" direction={["column", "column", "row"]}>
-        <Box w="100%">
-          <Heading>
-            <Flex align="center">
-              <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="2xl">
-                Featured Post
-              </PageTitle>
-            </Flex>
-          </Heading>
-          <SimpleGrid 
-            mt={3}
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-            px={4}
-          >
-              <PostListItem />
-              <PostListItem />
-              <PostListItem />
-          </SimpleGrid>
-        </Box>
-      </Flex>
+        {/* FEATURED POST */}
+        <Flex mt={4} w="100%" direction={["column", "column", "row"]}>
+          <Box>
+            <Heading>
+              <Flex align="center">
+                <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="2xl">
+                  Featured Post
+                </PageTitle>
+              </Flex>
+            </Heading>
+            <SimpleGrid 
+              mt={3}
+              flexDirection="column"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              px={4}
+            >
+              {
+                featuredPost.map((post, index) => (
+                  <PostListItem key={index} post={post} />
+                ))
+              }
+            </SimpleGrid>
+          </Box>
+        </Flex>
 
-      {/* FAETURED PROJECT */}
-      <Flex mt={4} direction={["column", "column", "row"]}>
-        <Box>
-          <Heading>
-            <Flex align="center">
-              <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="2xl">
-                Featured Project
-              </PageTitle>
-            </Flex>
-          </Heading>
-          <SimpleGrid mt={3} >
-            {
-              FeaturedProjects.map((project, index) => (
-                <FeaturedProjectCard title={project.title} key={index} {...project}>
-                  {project.desc}
-                </FeaturedProjectCard>
-              ))
-            }
-          </SimpleGrid>
-        </Box>
-      </Flex>
+        {/* FAETURED PROJECT */}
+        <Flex mt={6} direction={["column", "column", "row"]}>
+          <Box>
+            <Heading>
+              <Flex align="center">
+                <PageTitle underlineColor='#06b6d4' mt={0} mb={0} fontSize="2xl">
+                  Featured Project
+                </PageTitle>
+              </Flex>
+            </Heading>
+            <SimpleGrid mt={3} >
+              {
+                FeaturedProjects.map((project, index) => (
+                  <FeaturedProjectCard title={project.title} key={index} {...project}>
+                    {project.desc}
+                  </FeaturedProjectCard>
+                ))
+              }
+            </SimpleGrid>
+          </Box>
+        </Flex>
+      </Stack>
     </Container>
   )
 }

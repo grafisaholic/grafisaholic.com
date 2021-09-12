@@ -12,6 +12,9 @@ import Container from '../components/Container';
 import PageTitle from '../components/_partials/pageTitle';
 import ProjectItem from '../components/projects/ProjectItem';
 
+import { openSource } from '../data/projects';
+import { allProjects } from '../data/projects'
+
 export default function Projects() {
   const {colorMode} = useColorMode();
   const colorSecondary = {
@@ -36,10 +39,17 @@ export default function Projects() {
           </Heading>
 
           <Stack spacing="lg">
-            <ProjectItem />
-            <ProjectItem />
-            <ProjectItem />
-            <ProjectItem />
+            {
+              allProjects.map((pro, index) => (
+                <ProjectItem 
+                  key={index}
+                  title={pro.title}
+                  desc={pro.desc}
+                  link={pro.link}
+                  {...pro.technologies}
+                />
+              ))
+            }
           </Stack>
         </Box>
 
@@ -50,9 +60,18 @@ export default function Projects() {
             </PageTitle>
           </Heading>
 
-          <Stack spacing="lg">
-            <ProjectItem />
-            <ProjectItem />
+          <Stack spacing="lg" width="700px">
+            {
+              openSource.map((os, index) => (
+                <ProjectItem 
+                  key={index}
+                  title={os.title}
+                  desc={os.desc}
+                  link={os.link}
+                  {...os.dependencies}
+                />
+              ))
+            }
           </Stack>
         </Box>
       </Stack>

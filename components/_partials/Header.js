@@ -57,7 +57,7 @@ const Header = () => {
                     mt={1}
                     mr={3}	
                     // src={UserIcon}
-                    src={"https://gitlab.com/uploads/-/system/user/avatar/3770900/avatar.png?width=400"}
+                    src={"/assets/avatar.png"}
                 />
             </NextLink>
             <NextLink href="/about" passHref>	
